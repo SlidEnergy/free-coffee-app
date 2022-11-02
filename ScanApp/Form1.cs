@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
 using System.Text;
 using System.Windows.Forms;
 using System.Windows.Input;
-using static DevExpress.XtraEditors.Mask.MaskSettings;
 using Timer = System.Threading.Timer;
 
 namespace ScanApp
