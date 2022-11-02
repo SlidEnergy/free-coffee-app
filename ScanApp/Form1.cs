@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Input;
 using Timer = System.Threading.Timer;
@@ -17,6 +18,7 @@ namespace ScanApp
         private IProductsService productService;
         private string userId = null;
         private Configuration configuration;
+        private FormWindowState prevWindowState = FormWindowState.Maximized;
 
         public Form1()
         {
@@ -170,6 +172,11 @@ namespace ScanApp
 
         private async void orderButton_Click(object sender, EventArgs e)
         {
+            await ConsumePoints();
+        }
+
+        private async Task ConsumePoints()
+        {
             try
             {
                 var product = GetSelectedProduct();
@@ -232,7 +239,7 @@ namespace ScanApp
 
         private void ShowMainWindow()
         {
-            WindowState = FormWindowState.Normal;
+            WindowState = prevWindowState;
             ShowInTaskbar = true;
         }
 
@@ -252,6 +259,15 @@ namespace ScanApp
                 HideInTaskBar();
 
             }
+            else
+            {
+                prevWindowState = WindowState;
+            }
+        }
+
+        private async void productListBox_DoubleClick(object sender, EventArgs e)
+        {
+            await ConsumePoints();
         }
     }
 }
