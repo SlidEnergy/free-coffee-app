@@ -15,5 +15,7 @@ namespace ScanApp
         public string CheckPointsEndPoint { get; set; } = "points/check";
 
         public string ConsumeEndpoint { get; set; } = "points/consume";
+
+        public int ScannerTypeOneCharTimeoutInMilliseconds { get; set; } = 1000;
     }
 }

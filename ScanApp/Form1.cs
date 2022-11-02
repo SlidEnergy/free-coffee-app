@@ -16,6 +16,7 @@ namespace ScanApp
         private const string PLEASE_SCAN_MESSAGE = "Please scan QR code.";
         private IProductsService productService;
         private string userId = null;
+        private Configuration configuration;
 
         public Form1()
         {
@@ -23,7 +24,10 @@ namespace ScanApp
 
             userIdLabel.Text = PLEASE_SCAN_MESSAGE;
             barcodeScannerProvider = new BarcodeScannerProvider();
-            productService = new ProductsService(new Configuration());
+            configuration = new Configuration();
+            productService = new ProductsService(configuration);
+
+            HideInTaskBar();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -52,8 +56,7 @@ namespace ScanApp
 
                 CloseSessionWithUserQRCode();
 
-                this.userId = userId;
-                ShowUserId(userId);
+                StartSessionWithUserQRCode(userId);
             }
             catch (Exception ex)
             {
@@ -117,7 +120,7 @@ namespace ScanApp
 
                 ClearTimer();
 
-                timer = new Timer(OnTimerElapsed, null, 1000, 0);
+                timer = new Timer(OnTimerElapsed, null, configuration.ScannerTypeOneCharTimeoutInMilliseconds, 0);
             }
             catch (Exception ex)
             {
@@ -203,14 +206,52 @@ namespace ScanApp
             finally
             {
                 CloseSessionWithUserQRCode();
+                HideInTaskBar();
             }
         }
+
+        private void StartSessionWithUserQRCode(string userId)
+        {
+            this.userId = userId;
+            ShowUserId(userId);
+            ShowMainWindow();
+        }
+
 
         private void CloseSessionWithUserQRCode()
         {
             ShowProducts(null);
             ShowUserId(null);
             userId = null;
+        }
+
+        private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
+        {
+            ShowMainWindow();
+        }
+
+        private void ShowMainWindow()
+        {
+            WindowState = FormWindowState.Normal;
+            ShowInTaskbar = true;
+        }
+
+        private void HideInTaskBar()
+        {
+            WindowState = FormWindowState.Minimized;
+            ShowInTaskbar = false;
+            //notifyIcon1.BalloonTipText = "Application Minimized.";
+            //notifyIcon1.BalloonTipTitle = "Free coffee";
+            //notifyIcon1.ShowBalloonTip(1000);
+        }
+
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Minimized)
+            {
+                HideInTaskBar();
+
+            }
         }
     }
 }
