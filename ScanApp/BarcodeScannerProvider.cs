@@ -6,7 +6,7 @@ namespace ScanApp
     {
         public string MatchAndGetUserIdFromQRCode(string keyDownBuffer)
         {
-            var regex = new Regex(@"scanapp-([a-z0-9]{7,7})", RegexOptions.IgnoreCase);
+            var regex = new Regex(@"scanapp-(\d+)", RegexOptions.IgnoreCase);
 
             var match = regex.Match(keyDownBuffer);
 

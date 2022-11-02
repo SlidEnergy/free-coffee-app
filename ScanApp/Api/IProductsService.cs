@@ -7,6 +7,6 @@ namespace ScanApp
     {
         Task<List<Product>> GetFreeProductsAsync(string userId);
 
-        Task<string> OrderProductAsync(Product product);
+        Task<string> OrderProductAsync(Product product, string userId);
     }
 }

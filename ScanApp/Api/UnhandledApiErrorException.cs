@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace ScanApp
 {
-    public class Product
+    public class UnhandledApiErrorException : Exception
     {
-        public string Title { get; set; }
+        public UnhandledApiErrorException(string message) : base(message)
+        {
+
+        }
     }
 }

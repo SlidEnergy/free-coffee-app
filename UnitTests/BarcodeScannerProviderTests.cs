@@ -10,15 +10,15 @@ namespace UnitTests
         }
 
         [Test]
-        public void Test1()
+        public void MatchAndGetUserIdFromQRCode_Should()
         {
             var barcodeScannerProvider = new BarcodeScannerProvider();
 
-            var result = barcodeScannerProvider.MatchAndGetUserIdFromQRCode("othertextscanapp-sdkj324othertext");
+            var result = barcodeScannerProvider.MatchAndGetUserIdFromQRCode("othertextscanapp-1234othertext");
 
             Assert.IsNotNull(result);
 
-            Assert.AreEqual("sdkj324", result);
+            Assert.AreEqual("1234", result);
         }
     }
 }

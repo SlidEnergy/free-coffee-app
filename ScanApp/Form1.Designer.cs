@@ -39,7 +39,6 @@
             this.productListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.productListBox.DisplayMember = "Title";
             this.productListBox.FormattingEnabled = true;
             this.productListBox.Location = new System.Drawing.Point(-1, 33);
             this.productListBox.Name = "productListBox";

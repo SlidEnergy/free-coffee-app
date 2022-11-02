@@ -1,21 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Windows.Forms;
 using System.Windows.Input;
+using static DevExpress.XtraEditors.Mask.MaskSettings;
 using Timer = System.Threading.Timer;
 
 namespace ScanApp
 {
     public partial class Form1 : Form
     {
-        KeyboardHook hook;
-        StringBuilder keyDownBuffer = new StringBuilder();
-        Timer timer;
-        BarcodeScannerProvider barcodeScannerProvider;
+        private KeyboardHook hook;
+        private StringBuilder keyDownBuffer = new StringBuilder();
+        private Timer timer;
+        private BarcodeScannerProvider barcodeScannerProvider;
         private const string PLEASE_SCAN_MESSAGE = "Please scan QR code.";
-        IProductsService productService;
+        private IProductsService productService;
+        private string userId = null;
 
         public Form1()
         {
@@ -23,7 +26,7 @@ namespace ScanApp
 
             userIdLabel.Text = PLEASE_SCAN_MESSAGE;
             barcodeScannerProvider = new BarcodeScannerProvider();
-            productService = new ProductsService();
+            productService = new ProductsService(new Configuration());
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -50,16 +53,41 @@ namespace ScanApp
                 if (string.IsNullOrEmpty(userId))
                     return;
 
-                ShowUserId(userId);
+                CloseSessionWithUserQRCode();
 
+                this.userId = userId;
+                ShowUserId(userId);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, "Thrown error while scan QR code." + Environment.NewLine + Environment.NewLine + ex.Message,
+                "Error", MessageBoxButtons.OK);
+            }
+
+            try
+            {
                 var products = await productService.GetFreeProductsAsync(userId);
 
                 ShowProducts(products);
             }
+            catch (UnauthorizedAccessException ex)
+            {
+                MessageBox.Show(this, "Your request forbidden, perhapse your authorization token expired or blocked. Call to administrator." + Environment.NewLine + Environment.NewLine + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (ApiErrorException ex)
+            {
+                MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (UnhandledApiErrorException ex)
+            {
+                MessageBox.Show(this, "Trown error while send request." + Environment.NewLine + Environment.NewLine + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (Exception ex)
             {
-                MessageBox.Show(this, "Trown error while hook key down. Restart app please." + Environment.NewLine + Environment.NewLine + ex.Message,
-                    "Error", MessageBoxButtons.OK);
+                MessageBox.Show(this, "Trown unhandled error while send request. Please try later or call to administrator." + Environment.NewLine + Environment.NewLine + ex.Message,
+                    "Unhandled error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -70,9 +98,8 @@ namespace ScanApp
 
         private void ShowProducts(List<Product> products)
         {
-            productListBox.Items.Clear();
-
-            productListBox.DataSource = products;
+            productListBox.DisplayMember = nameof(Product.Name);
+            productListBox.DataSource = products ?? default(List<Product>);
 
             UpdateOrderButtonState();
         }
@@ -98,7 +125,7 @@ namespace ScanApp
             catch (Exception ex)
             {
                 MessageBox.Show(this, "Trown error while hook key down. Restart app please." + Environment.NewLine + Environment.NewLine + ex.Message,
-                    "Error", MessageBoxButtons.OK);
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -141,7 +168,7 @@ namespace ScanApp
             return (Product)productListBox.SelectedItem;
         }
 
-        private async  void orderButton_Click(object sender, EventArgs e)
+        private async void orderButton_Click(object sender, EventArgs e)
         {
             try
             {
@@ -153,25 +180,40 @@ namespace ScanApp
                     return;
                 }
 
-                var result = await productService.OrderProductAsync(product);
+                var successMessage = await productService.OrderProductAsync(product, userId);
 
-                if (!string.IsNullOrEmpty(result))
-                {
-                    MessageBox.Show(this, result, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else 
-                {
-                    MessageBox.Show(this, "Product has been ordered.", "Success", MessageBoxButtons.OK);
-                }
-
-                ShowProducts(null);
-                ShowUserId(null);
+                MessageBox.Show(this, successMessage ?? "Product has been ordered.", "Success", MessageBoxButtons.OK);
             }
-            catch(Exception ex)
+            catch (UnauthorizedAccessException ex)
             {
-                MessageBox.Show(this, "Trown error while order product. Please try later or call to administrator." + Environment.NewLine + Environment.NewLine + ex.Message,
-                   "Error", MessageBoxButtons.OK);
+                MessageBox.Show(this, "Your request forbidden, perhapse your authorization token expired or blocked. Call to administrator." + Environment.NewLine + Environment.NewLine + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            catch (ApiErrorException ex)
+            {
+                MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (UnhandledApiErrorException ex)
+            {
+                MessageBox.Show(this, "Trown error while send request." + Environment.NewLine + Environment.NewLine + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, "Trown unhandled error while send request. Please try later or call to administrator." + Environment.NewLine + Environment.NewLine + ex.Message,
+                    "Unhandled error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                CloseSessionWithUserQRCode();
+            }
+        }
+
+        private void CloseSessionWithUserQRCode()
+        {
+            ShowProducts(null);
+            ShowUserId(null);
+            userId = null;
         }
     }
 }
