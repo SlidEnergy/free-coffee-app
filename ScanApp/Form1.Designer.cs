@@ -147,6 +147,7 @@ namespace ScanApp
             this.productListBox.Name = "productListBox";
             this.productListBox.Size = new System.Drawing.Size(750, 319);
             this.productListBox.TabIndex = 0;
+            this.productListBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(37)))), ((int)(((byte)(27)))));
             this.productListBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.productListBox_DrawItem);
             this.productListBox.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.productListBox_MeasureItem);
             this.productListBox.SelectedIndexChanged += new System.EventHandler(this.productListBox_SelectedIndexChanged);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ScanApp.Utils;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -308,9 +309,16 @@ namespace ScanApp
             var product = products[e.Index];
 
             e.DrawBackground();
-            e.Graphics.DrawString(product.Name, e.Font, Brushes.Black, e.Bounds, StringFormat.GenericDefault);
+
+            Brush backBrush = ((e.State & DrawItemState.Selected) == DrawItemState.Selected) ? new SolidBrush(BrandPallete.RedColor) : new SolidBrush(e.BackColor);
+            Brush foreBrush = ((e.State & DrawItemState.Selected) == DrawItemState.Selected) ? Brushes.White : Brushes.Black;
+
+            e.Graphics.FillRectangle(backBrush, e.Bounds);
+
+            var textBounds = new Rectangle(e.Bounds.X, e.Bounds.Y + 10, e.Bounds.Width, e.Bounds.Height);
+            e.Graphics.DrawString(product.Name, e.Font, foreBrush, textBounds, StringFormat.GenericDefault);
             // If the ListBox has focus, draw a focus rectangle around the selected item.
-            e.DrawFocusRectangle();
+            //e.DrawFocusRectangle();
         }
 
         private void ShowLoadingIndicator()
@@ -329,7 +337,7 @@ namespace ScanApp
             isLoading = false;
             loadingPanel.Visible = false;
             UpdateOrderButtonState();
-            productListBox.Enabled = false;
+            productListBox.Enabled = true;
         }
     }
 }
