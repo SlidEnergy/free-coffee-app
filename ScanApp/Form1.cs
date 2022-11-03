@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,6 +20,7 @@ namespace ScanApp
         private string userId = null;
         private Configuration configuration;
         private FormWindowState prevWindowState = FormWindowState.Maximized;
+        private bool isLoading = false;
 
         public Form1()
         {
@@ -29,13 +31,17 @@ namespace ScanApp
             configuration = new Configuration();
             productService = new ProductsService(configuration);
 
-            HideInTaskBar();
+
+
+            //HideInTaskBar();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             hook = new KeyboardHook(true);
             hook.KeyDown += Hook_KeyDown;
+
+            ShowLoadingIndicator();
         }
 
         public delegate void OnTimerElapsedDelegate(object state);
@@ -68,6 +74,8 @@ namespace ScanApp
 
             try
             {
+                ShowLoadingIndicator();
+
                 var products = await productService.GetFreeProductsAsync(userId);
 
                 ShowProducts(products);
@@ -90,6 +98,10 @@ namespace ScanApp
             {
                 MessageBox.Show(this, "Trown unhandled error while send request. Please try later or call to administrator." + Environment.NewLine + Environment.NewLine + ex.Message,
                     "Unhandled error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                HideLoadingIndicator();
             }
         }
 
@@ -157,7 +169,7 @@ namespace ScanApp
 
         private void UpdateOrderButtonState()
         {
-            if (GetSelectedProduct() == null)
+            if (GetSelectedProduct() == null || isLoading)
             {
                 orderButton.Enabled = false;
             }
@@ -179,6 +191,8 @@ namespace ScanApp
         {
             try
             {
+                ShowLoadingIndicator();
+
                 var product = GetSelectedProduct();
 
                 if (product == null)
@@ -212,6 +226,7 @@ namespace ScanApp
             }
             finally
             {
+                HideLoadingIndicator();
                 CloseSessionWithUserQRCode();
                 HideInTaskBar();
             }
@@ -262,12 +277,58 @@ namespace ScanApp
             else
             {
                 prevWindowState = WindowState;
+                if (isLoading)
+                {
+                    ShowLoadingIndicator();
+                }
             }
         }
 
         private async void productListBox_DoubleClick(object sender, EventArgs e)
         {
             await ConsumePoints();
+        }
+
+        private void productListBox_MeasureItem(object sender, MeasureItemEventArgs e)
+        {
+            e.ItemHeight = 40;
+        }
+
+        private void productListBox_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            if (e.Index < 0)
+                return;
+
+            var products = (List<Product>)productListBox.DataSource;
+
+            if (products == null || products.Count == 0)
+                return;
+
+            var product = products[e.Index];
+
+            e.DrawBackground();
+            e.Graphics.DrawString(product.Name, e.Font, Brushes.Black, e.Bounds, StringFormat.GenericDefault);
+            // If the ListBox has focus, draw a focus rectangle around the selected item.
+            e.DrawFocusRectangle();
+        }
+
+        private void ShowLoadingIndicator()
+        {
+            isLoading = true;
+
+            loadingPanel.Location = new Point(productListBox.Width / 2 - loadingPanel.Width / 2, productListBox.Height / 2 - loadingPanel.Height / 2);
+
+            loadingPanel.Visible = true;
+            UpdateOrderButtonState();
+            productListBox.Enabled = false;
+        }
+
+        private void HideLoadingIndicator()
+        {
+            isLoading = false;
+            loadingPanel.Visible = false;
+            UpdateOrderButtonState();
+            productListBox.Enabled = false;
         }
     }
 }
