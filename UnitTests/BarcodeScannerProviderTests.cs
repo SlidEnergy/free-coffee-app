@@ -1,4 +1,4 @@
-using ScanApp;
+using PointsChecker;
 
 namespace UnitTests
 {

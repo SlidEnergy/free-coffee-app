@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="PointsChecker.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="BaseUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://zireto.ro/api/</Value>
+    </Setting>
+    <Setting Name="CheckPointsEndPoint" Type="System.String" Scope="User">
+      <Value Profile="(Default)">points/check</Value>
+    </Setting>
+    <Setting Name="ConsumeEndpoint" Type="System.String" Scope="User">
+      <Value Profile="(Default)">points/consume</Value>
+    </Setting>
+    <Setting Name="ScannerInputTimeoutInMilliseconds" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">500</Value>
+    </Setting>
+    <Setting Name="EncryptedApiToken" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1234</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
