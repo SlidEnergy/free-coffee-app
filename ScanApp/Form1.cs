@@ -191,6 +191,9 @@ namespace ScanApp
 
         private async Task ConsumePoints()
         {
+            if (MessageBox.Show(this, "Do you want to finish transaction and consume points?", "Confirm transaction", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                return;
+
             try
             {
                 ShowLoadingIndicator();
