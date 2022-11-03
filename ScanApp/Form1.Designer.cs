@@ -32,39 +32,21 @@ namespace ScanApp
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.productListBox = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.userIdLabel = new System.Windows.Forms.Label();
-            this.orderButton = new ScanApp.Controls.RoundedButton();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.loadingPanel = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.panel1 = new ScanApp.Controls.RoundedPanel();
+            this.loadingPanel = new ScanApp.Controls.RoundedPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.productListBox = new ScanApp.Controls.RoundedListBox();
+            this.orderButton = new ScanApp.Controls.RoundedButton();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
             this.loadingPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
-            // 
-            // productListBox
-            // 
-            this.productListBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.productListBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.productListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.productListBox.FormattingEnabled = true;
-            this.productListBox.IntegralHeight = false;
-            this.productListBox.ItemHeight = 40;
-            this.productListBox.Location = new System.Drawing.Point(0, 0);
-            this.productListBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.productListBox.Name = "productListBox";
-            this.productListBox.Size = new System.Drawing.Size(750, 319);
-            this.productListBox.TabIndex = 0;
-            this.productListBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.productListBox_DrawItem);
-            this.productListBox.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.productListBox_MeasureItem);
-            this.productListBox.SelectedIndexChanged += new System.EventHandler(this.productListBox_SelectedIndexChanged);
-            this.productListBox.DoubleClick += new System.EventHandler(this.productListBox_DoubleClick);
             // 
             // label1
             // 
@@ -90,30 +72,23 @@ namespace ScanApp
             this.userIdLabel.TabIndex = 2;
             this.userIdLabel.Text = "Please scan message";
             // 
-            // orderButton
-            // 
-            this.orderButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.orderButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(37)))), ((int)(((byte)(27)))));
-            this.orderButton.Enabled = false;
-            this.orderButton.FlatAppearance.BorderSize = 0;
-            this.orderButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.orderButton.Font = new System.Drawing.Font("Roboto Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.orderButton.ForeColor = System.Drawing.Color.White;
-            this.orderButton.Location = new System.Drawing.Point(633, 387);
-            this.orderButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.orderButton.Name = "orderButton";
-            this.orderButton.Size = new System.Drawing.Size(139, 53);
-            this.orderButton.TabIndex = 3;
-            this.orderButton.Text = "Order";
-            this.orderButton.UseVisualStyleBackColor = false;
-            this.orderButton.Click += new System.EventHandler(this.orderButton_Click);
-            // 
             // notifyIcon1
             // 
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
             this.notifyIcon1.Text = "Zireto - Points Checker";
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseClick);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(22, 375);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(235, 65);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 5;
+            this.pictureBox2.TabStop = false;
             // 
             // panel1
             // 
@@ -158,16 +133,42 @@ namespace ScanApp
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // pictureBox2
+            // productListBox
             // 
-            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(22, 375);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(235, 65);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 5;
-            this.pictureBox2.TabStop = false;
+            this.productListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.productListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.productListBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.productListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.productListBox.FormattingEnabled = true;
+            this.productListBox.IntegralHeight = false;
+            this.productListBox.ItemHeight = 40;
+            this.productListBox.Location = new System.Drawing.Point(0, 0);
+            this.productListBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.productListBox.Name = "productListBox";
+            this.productListBox.Size = new System.Drawing.Size(750, 319);
+            this.productListBox.TabIndex = 0;
+            this.productListBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.productListBox_DrawItem);
+            this.productListBox.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.productListBox_MeasureItem);
+            this.productListBox.SelectedIndexChanged += new System.EventHandler(this.productListBox_SelectedIndexChanged);
+            this.productListBox.DoubleClick += new System.EventHandler(this.productListBox_DoubleClick);
+            // 
+            // orderButton
+            // 
+            this.orderButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.orderButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(37)))), ((int)(((byte)(27)))));
+            this.orderButton.Enabled = false;
+            this.orderButton.FlatAppearance.BorderSize = 0;
+            this.orderButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.orderButton.Font = new System.Drawing.Font("Roboto Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.orderButton.ForeColor = System.Drawing.Color.White;
+            this.orderButton.Location = new System.Drawing.Point(633, 387);
+            this.orderButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.orderButton.Name = "orderButton";
+            this.orderButton.Size = new System.Drawing.Size(139, 53);
+            this.orderButton.TabIndex = 3;
+            this.orderButton.Text = "Order";
+            this.orderButton.UseVisualStyleBackColor = false;
+            this.orderButton.Click += new System.EventHandler(this.orderButton_Click);
             // 
             // Form1
             // 
@@ -190,11 +191,11 @@ namespace ScanApp
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Resize += new System.EventHandler(this.Form1_Resize);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel1.ResumeLayout(false);
             this.loadingPanel.ResumeLayout(false);
             this.loadingPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -202,14 +203,14 @@ namespace ScanApp
 
         #endregion
 
-        private System.Windows.Forms.ListBox productListBox;
+        private Controls.RoundedListBox productListBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label userIdLabel;
         private Controls.RoundedButton orderButton;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
-        private System.Windows.Forms.Panel panel1;
+        private Controls.RoundedPanel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Panel loadingPanel;
+        private Controls.RoundedPanel loadingPanel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox2;
     }

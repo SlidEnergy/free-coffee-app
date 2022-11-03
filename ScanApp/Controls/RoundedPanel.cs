@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace ScanApp.Controls
 {
-    public class RoundedButton : Button
+    public class RoundedPanel : Panel
     {
         GraphicsPath GetRoundPath(RectangleF Rect, int radius)
         {

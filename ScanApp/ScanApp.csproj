@@ -59,6 +59,12 @@
     <Compile Include="Api\UnprocessableErrorResponse.cs" />
     <Compile Include="BarcodeScannerProvider.cs" />
     <Compile Include="Configuration.cs" />
+    <Compile Include="Controls\RoundedPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\RoundedListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\RoundedButton.cs">
       <SubType>Component</SubType>
     </Compile>
