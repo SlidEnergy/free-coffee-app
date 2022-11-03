@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ScanApp
+﻿namespace ScanApp
 {
     public class Configuration
     {
+        public const string SecureKey = "d0sk39dksldn30dsndswei1vzm49df7dsb32vsm34ks870d";
+
         public string BaseUrl { get; set; } = @"https://zireto.ro/api/";
 
         public string ApiToken { get; set; } = "1234";
@@ -16,6 +12,6 @@ namespace ScanApp
 
         public string ConsumeEndpoint { get; set; } = "points/consume";
 
-        public int ScannerTypeOneCharTimeoutInMilliseconds { get; set; } = 1000;
+        public int ScannerInputTimeoutInMilliseconds { get; set; } = 1000;
     }
 }

@@ -2,7 +2,7 @@
 
 namespace ScanApp
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@ namespace ScanApp
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.label1 = new System.Windows.Forms.Label();
             this.userIdLabel = new System.Windows.Forms.Label();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
@@ -42,6 +42,7 @@ namespace ScanApp
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.productListBox = new ScanApp.Controls.RoundedListBox();
             this.orderButton = new ScanApp.Controls.RoundedButton();
+            this.settingsButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
             this.loadingPanel.SuspendLayout();
@@ -139,6 +140,7 @@ namespace ScanApp
             this.productListBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.productListBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.productListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.productListBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(37)))), ((int)(((byte)(27)))));
             this.productListBox.FormattingEnabled = true;
             this.productListBox.IntegralHeight = false;
             this.productListBox.ItemHeight = 40;
@@ -147,7 +149,6 @@ namespace ScanApp
             this.productListBox.Name = "productListBox";
             this.productListBox.Size = new System.Drawing.Size(750, 319);
             this.productListBox.TabIndex = 0;
-            this.productListBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(37)))), ((int)(((byte)(27)))));
             this.productListBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.productListBox_DrawItem);
             this.productListBox.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.productListBox_MeasureItem);
             this.productListBox.SelectedIndexChanged += new System.EventHandler(this.productListBox_SelectedIndexChanged);
@@ -171,11 +172,27 @@ namespace ScanApp
             this.orderButton.UseVisualStyleBackColor = false;
             this.orderButton.Click += new System.EventHandler(this.orderButton_Click);
             // 
-            // Form1
+            // settingsButton
+            // 
+            this.settingsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.settingsButton.BackColor = System.Drawing.SystemColors.Control;
+            this.settingsButton.FlatAppearance.BorderSize = 0;
+            this.settingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.settingsButton.Image = ((System.Drawing.Image)(resources.GetObject("settingsButton.Image")));
+            this.settingsButton.Location = new System.Drawing.Point(738, 6);
+            this.settingsButton.Margin = new System.Windows.Forms.Padding(0);
+            this.settingsButton.Name = "settingsButton";
+            this.settingsButton.Size = new System.Drawing.Size(34, 34);
+            this.settingsButton.TabIndex = 7;
+            this.settingsButton.UseVisualStyleBackColor = false;
+            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(790, 452);
+            this.Controls.Add(this.settingsButton);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.orderButton);
@@ -185,7 +202,7 @@ namespace ScanApp
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MinimumSize = new System.Drawing.Size(600, 400);
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Zireto - Points Checker";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -214,6 +231,7 @@ namespace ScanApp
         private Controls.RoundedPanel loadingPanel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button settingsButton;
     }
 }
 

@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -11,7 +10,7 @@ using Timer = System.Threading.Timer;
 
 namespace ScanApp
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         private KeyboardHook hook;
         private StringBuilder keyDownBuffer = new StringBuilder();
@@ -20,30 +19,51 @@ namespace ScanApp
         private const string PLEASE_SCAN_MESSAGE = "Please scan QR code.";
         private IProductsService productService;
         private string userId = null;
-        private Configuration configuration;
         private FormWindowState prevWindowState = FormWindowState.Maximized;
         private bool isLoading = false;
+        private Configuration configuration;
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
 
+            UpdateConfiguration();
+
             userIdLabel.Text = PLEASE_SCAN_MESSAGE;
             barcodeScannerProvider = new BarcodeScannerProvider();
-            configuration = new Configuration();
             productService = new ProductsService(configuration);
 
+            HideInTaskBar();
+        }
 
+        private void UpdateConfiguration()
+        {
+            string apiToken = "";
 
-            //HideInTaskBar();
+            try
+            {
+                if(!string.IsNullOrWhiteSpace(Properties.Settings.Default.EncryptedApiToken))
+                    apiToken = Encrypt.DecryptString(Properties.Settings.Default.EncryptedApiToken, Configuration.SecureKey);
+            }
+            catch
+            {
+
+            }
+
+            configuration = new Configuration()
+            {
+                CheckPointsEndPoint = Properties.Settings.Default.CheckPointsEndPoint,
+                ApiToken = apiToken,
+                BaseUrl = Properties.Settings.Default.BaseUrl,
+                ConsumeEndpoint = Properties.Settings.Default.ConsumeEndpoint,
+                ScannerInputTimeoutInMilliseconds = Properties.Settings.Default.ScannerInputTimeoutInMilliseconds
+            };
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             hook = new KeyboardHook(true);
             hook.KeyDown += Hook_KeyDown;
-
-            ShowLoadingIndicator();
         }
 
         public delegate void OnTimerElapsedDelegate(object state);
@@ -136,7 +156,7 @@ namespace ScanApp
 
                 ClearTimer();
 
-                timer = new Timer(OnTimerElapsed, null, configuration.ScannerTypeOneCharTimeoutInMilliseconds, 0);
+                timer = new Timer(OnTimerElapsed, null, configuration.ScannerInputTimeoutInMilliseconds, 0);
             }
             catch (Exception ex)
             {
@@ -341,6 +361,19 @@ namespace ScanApp
             loadingPanel.Visible = false;
             UpdateOrderButtonState();
             productListBox.Enabled = true;
+        }
+
+        private void settingsButton_Click(object sender, EventArgs e)
+        {
+            using (var form = new SettingsForm())
+            {
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    UpdateConfiguration();
+
+                    productService = new ProductsService(configuration);
+                }
+            }
         }
     }
 }
