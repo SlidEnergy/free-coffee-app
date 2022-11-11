@@ -17,5 +17,11 @@
     <Setting Name="EncryptedApiToken" Type="System.String" Scope="User">
       <Value Profile="(Default)">1234</Value>
     </Setting>
+    <Setting Name="UserIdPrefix" Type="System.String" Scope="User">
+      <Value Profile="(Default)">scanapp-</Value>
+    </Setting>
+    <Setting Name="RunAsStartup" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

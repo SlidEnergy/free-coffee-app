@@ -25,29 +25,61 @@ namespace PointsChecker
             uint wVirtKey,
             uint wScanCode,
             byte[] lpKeyState,
-            [Out, MarshalAs( UnmanagedType.LPWStr, SizeParamIndex = 4 )]
+            [Out, MarshalAs( UnmanagedType.LPWStr)]
         StringBuilder pwszBuff,
             int cchBuff,
             uint wFlags);
 
         [DllImport("user32.dll")]
+        public static extern int ToUnicodeEx(
+            uint wVirtKey,
+            uint wScanCode,
+            byte[] lpKeyState,
+            [Out, MarshalAs( UnmanagedType.LPWStr)]
+                StringBuilder pwszBuff,
+            int cchBuff,
+            uint wFlags,
+            IntPtr dwhkl);
+
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool GetKeyboardState(byte[] lpKeyState);
+
+        [DllImport("user32.dll")]
+        internal static extern IntPtr GetKeyboardLayout(uint idThread);
 
         [DllImport("user32.dll")]
         public static extern uint MapVirtualKey(uint uCode, MapType uMapType);
 
-        public static char GetCharFromKey(Key key)
+        [DllImport("user32.dll")]
+        public static extern int ToAscii(
+            uint wVirtKey,
+            uint wScanCode,
+            byte[] lpKeyState,
+            [Out, MarshalAs( UnmanagedType.LPWStr)]
+                        StringBuilder pwszBuff,
+            uint wFlags);
+
+        [DllImport("user32.dll")]
+        public static extern int ToAsciiEx(
+            uint wVirtKey,
+            uint wScanCode,
+            byte[] lpKeyState,
+            [Out, MarshalAs( UnmanagedType.LPWStr)]
+                                StringBuilder pwszBuff,
+            uint wFlags,
+            IntPtr dwhkl);
+
+        public static char GetCharFromKey(KeyboardHookData lParam)
         {
             char ch = ' ';
 
-            int virtualKey = KeyInterop.VirtualKeyFromKey(key);
             var keyboardState = new byte[256];
             GetKeyboardState(keyboardState);
 
-            uint scanCode = MapVirtualKey((uint)virtualKey, MapType.MAPVK_VK_TO_VSC);
             var stringBuilder = new StringBuilder(2);
 
-            int result = ToUnicode((uint)virtualKey, scanCode, keyboardState, stringBuilder, stringBuilder.Capacity, 0);
+            int result = ToUnicode((uint)lParam.vkCode, (uint)lParam.scanCode, keyboardState, stringBuilder, stringBuilder.Capacity, 0);
             switch (result)
             {
                 case -1:
@@ -62,6 +94,96 @@ namespace PointsChecker
                 default:
                     {
                         ch = stringBuilder[0];
+                        break;
+                    }
+            }
+            return ch;
+        }
+
+        public static string GetCharFromKeyEx(KeyboardHookData lParam)
+        {
+            string ch = "";
+
+            var keyboardState = new byte[256];
+            GetKeyboardState(keyboardState);
+
+            var stringBuilder = new StringBuilder(2);
+
+            int result = ToUnicodeEx((uint)lParam.vkCode, (uint)lParam.scanCode, keyboardState, stringBuilder, stringBuilder.Capacity, 0, GetKeyboardLayout(0));
+            switch (result)
+            {
+                case -1:
+                    break; 
+                case 0:
+                    break;
+                case 1:
+                    {
+                        ch = stringBuilder.ToString();
+                        break;
+                    }
+                default:
+                    {
+                        ch = stringBuilder.ToString();
+                        break;
+                    }
+            }
+            return ch;
+        }
+
+        public static string GetCharFromKeyAscii(KeyboardHookData lParam)
+        {
+            string ch = "";
+
+            var keyboardState = new byte[256];
+            GetKeyboardState(keyboardState);
+
+            var stringBuilder = new StringBuilder(10);
+
+            int result = ToAscii((uint)lParam.vkCode, (uint)lParam.scanCode, keyboardState, stringBuilder, 0);
+            switch (result)
+            {
+                case -1:
+                    break;
+                case 0:
+                    break;
+                case 1:
+                    {
+                        ch = stringBuilder.ToString();
+                        break;
+                    }
+                default:
+                    {
+                        ch = stringBuilder.ToString();
+                        break;
+                    }
+            }
+            return ch;
+        }
+
+        public static string GetCharFromKeyAsciiEx(KeyboardHookData lParam)
+        {
+            string ch = "";
+
+            var keyboardState = new byte[256];
+            GetKeyboardState(keyboardState);
+
+            var stringBuilder = new StringBuilder(10);
+
+            int result = ToAsciiEx((uint)lParam.vkCode, (uint)lParam.scanCode, keyboardState, stringBuilder, 0, GetKeyboardLayout(0));
+            switch (result)
+            {
+                case -1:
+                    break;
+                case 0:
+                    break;
+                case 1:
+                    {
+                        ch = stringBuilder.ToString();
+                        break;
+                    }
+                default:
+                    {
+                        ch = stringBuilder.ToString();
                         break;
                     }
             }

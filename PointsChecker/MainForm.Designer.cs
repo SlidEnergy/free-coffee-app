@@ -36,13 +36,13 @@ namespace PointsChecker
             this.userIdLabel = new System.Windows.Forms.Label();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.settingsButton = new System.Windows.Forms.Button();
             this.panel1 = new PointsChecker.Controls.RoundedPanel();
             this.loadingPanel = new PointsChecker.Controls.RoundedPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.productListBox = new PointsChecker.Controls.RoundedListBox();
             this.orderButton = new PointsChecker.Controls.RoundedButton();
-            this.settingsButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
             this.loadingPanel.SuspendLayout();
@@ -90,6 +90,22 @@ namespace PointsChecker
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 5;
             this.pictureBox2.TabStop = false;
+            // 
+            // settingsButton
+            // 
+            this.settingsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.settingsButton.BackColor = System.Drawing.SystemColors.Control;
+            this.settingsButton.FlatAppearance.BorderSize = 0;
+            this.settingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.settingsButton.Image = ((System.Drawing.Image)(resources.GetObject("settingsButton.Image")));
+            this.settingsButton.Location = new System.Drawing.Point(738, 6);
+            this.settingsButton.Margin = new System.Windows.Forms.Padding(0);
+            this.settingsButton.Name = "settingsButton";
+            this.settingsButton.Size = new System.Drawing.Size(34, 34);
+            this.settingsButton.TabIndex = 7;
+            this.settingsButton.TabStop = false;
+            this.settingsButton.UseVisualStyleBackColor = false;
+            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
             // 
             // panel1
             // 
@@ -149,6 +165,7 @@ namespace PointsChecker
             this.productListBox.Name = "productListBox";
             this.productListBox.Size = new System.Drawing.Size(750, 319);
             this.productListBox.TabIndex = 0;
+            this.productListBox.TabStop = false;
             this.productListBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.productListBox_DrawItem);
             this.productListBox.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.productListBox_MeasureItem);
             this.productListBox.SelectedIndexChanged += new System.EventHandler(this.productListBox_SelectedIndexChanged);
@@ -168,24 +185,10 @@ namespace PointsChecker
             this.orderButton.Name = "orderButton";
             this.orderButton.Size = new System.Drawing.Size(139, 53);
             this.orderButton.TabIndex = 3;
+            this.orderButton.TabStop = false;
             this.orderButton.Text = "Order";
             this.orderButton.UseVisualStyleBackColor = false;
             this.orderButton.Click += new System.EventHandler(this.orderButton_Click);
-            // 
-            // settingsButton
-            // 
-            this.settingsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.settingsButton.BackColor = System.Drawing.SystemColors.Control;
-            this.settingsButton.FlatAppearance.BorderSize = 0;
-            this.settingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.settingsButton.Image = ((System.Drawing.Image)(resources.GetObject("settingsButton.Image")));
-            this.settingsButton.Location = new System.Drawing.Point(738, 6);
-            this.settingsButton.Margin = new System.Windows.Forms.Padding(0);
-            this.settingsButton.Name = "settingsButton";
-            this.settingsButton.Size = new System.Drawing.Size(34, 34);
-            this.settingsButton.TabIndex = 7;
-            this.settingsButton.UseVisualStyleBackColor = false;
-            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
             // 
             // MainForm
             // 

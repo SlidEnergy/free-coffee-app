@@ -27,6 +27,8 @@ namespace PointsChecker
             consumeEndpointTextBox.Text = Settings.Default.ConsumeEndpoint;
             ScannerInputTimeoutNumericUpDown.Value = Settings.Default.ScannerInputTimeoutInMilliseconds;
             apiTokenTextBox.Text = apiToken;
+            userIdPrefixTextBox.Text = Settings.Default.UserIdPrefix;
+            runAsStartupCheckBox.Checked = Settings.Default.RunAsStartup;
         }
 
         private void saveButton_Click(object sender, System.EventArgs e)
@@ -38,6 +40,7 @@ namespace PointsChecker
             Settings.Default.CheckPointsEndPoint = checkPointsEndpointTextBox.Text.Trim();
             Settings.Default.ConsumeEndpoint = consumeEndpointTextBox.Text.Trim();
             Settings.Default.ScannerInputTimeoutInMilliseconds = (int)ScannerInputTimeoutNumericUpDown.Value;
+            Settings.Default.UserIdPrefix = userIdPrefixTextBox.Text.Trim();
 
             try
             {
@@ -84,6 +87,25 @@ namespace PointsChecker
             }
 
             return true;
+        }
+
+        private void runAsStartupCheckBox_CheckedChanged(object sender, System.EventArgs e)
+        {
+            if (Settings.Default.RunAsStartup != runAsStartupCheckBox.Checked)
+            {
+                var startup = new StartUpApp();
+
+                if (runAsStartupCheckBox.Checked)
+                {
+                    startup.SetStartup();
+                    Settings.Default.RunAsStartup = true;
+                }
+                else
+                {
+                    startup.RemoveFromStartup();
+                    Settings.Default.RunAsStartup = false;
+                }
+            }
         }
     }
 }

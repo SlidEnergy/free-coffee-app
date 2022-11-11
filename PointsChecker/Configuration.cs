@@ -13,5 +13,7 @@
         public string ConsumeEndpoint { get; set; } = "points/consume";
 
         public int ScannerInputTimeoutInMilliseconds { get; set; } = 1000;
+
+        public string UserCodePrefix { get; set; } = "scanapp-1";
     }
 }

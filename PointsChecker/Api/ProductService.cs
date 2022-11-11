@@ -2,6 +2,7 @@
 using PointsChecker.Api;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -10,6 +11,8 @@ namespace PointsChecker
 {
     public class ProductsService : IProductsService
     {
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+
         HttpClient httpClient;
         Configuration configuration;
 
@@ -25,6 +28,8 @@ namespace PointsChecker
         public async Task<List<Product>> GetFreeProductsAsync(string userId)
         {
             var result =  await httpClient.PostAsync($"{configuration.CheckPointsEndPoint}?user_id={userId}", null);
+
+            Logger.Debug("GetFreeProductsAsync send apikey: " + string.Join(",", httpClient.DefaultRequestHeaders.GetValues("x-api-token")));
 
             if (result.IsSuccessStatusCode)
             {

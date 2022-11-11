@@ -4,9 +4,16 @@ namespace PointsChecker
 {
     public class BarcodeScannerProvider
     {
+        Configuration configuration;
+
+        public BarcodeScannerProvider(Configuration config)
+        {
+            configuration = config;
+        }
+
         public string MatchAndGetUserIdFromQRCode(string keyDownBuffer)
         {
-            var regex = new Regex(@"scanapp-(\d+)", RegexOptions.IgnoreCase);
+            var regex = new Regex(configuration.UserCodePrefix + @"(\d+)", RegexOptions.IgnoreCase);
 
             var match = regex.Match(keyDownBuffer);
 

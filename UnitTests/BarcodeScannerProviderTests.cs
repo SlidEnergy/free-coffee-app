@@ -12,7 +12,7 @@ namespace UnitTests
         [Test]
         public void MatchAndGetUserIdFromQRCode_Should()
         {
-            var barcodeScannerProvider = new BarcodeScannerProvider();
+            var barcodeScannerProvider = new BarcodeScannerProvider(new Configuration());
 
             var result = barcodeScannerProvider.MatchAndGetUserIdFromQRCode("othertextscanapp-1234othertext");
 

@@ -1,19 +1,26 @@
-﻿using PointsChecker.Utils;
+﻿using Newtonsoft.Json;
+using PointsChecker.Properties;
+using PointsChecker.Utils;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Input;
+using static PointsChecker.KeyEventUtility;
 using Timer = System.Threading.Timer;
 
 namespace PointsChecker
 {
     public partial class MainForm : Form
     {
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+
         private KeyboardHook hook;
         private StringBuilder keyDownBuffer = new StringBuilder();
+        private StringBuilder debugBuffer = new StringBuilder();
+        private bool lAltNumPadComboMode = false;
+        public StringBuilder lAltNumPadComboModeBuffer = new StringBuilder(3);
         private Timer timer;
         private BarcodeScannerProvider barcodeScannerProvider;
         private const string PLEASE_SCAN_MESSAGE = "Please scan QR code.";
@@ -30,10 +37,12 @@ namespace PointsChecker
             UpdateConfiguration();
 
             userIdLabel.Text = PLEASE_SCAN_MESSAGE;
-            barcodeScannerProvider = new BarcodeScannerProvider();
+            barcodeScannerProvider = new BarcodeScannerProvider(configuration);
             productService = new ProductsService(configuration);
 
             HideInTaskBar();
+
+            Logger.Debug("MainForm {0}", JsonConvert.SerializeObject(configuration));
         }
 
         private void UpdateConfiguration()
@@ -47,7 +56,7 @@ namespace PointsChecker
             }
             catch
             {
-
+                Logger.Error("Can't decrypt api token");
             }
 
             configuration = new Configuration()
@@ -56,7 +65,8 @@ namespace PointsChecker
                 ApiToken = apiToken,
                 BaseUrl = Properties.Settings.Default.BaseUrl,
                 ConsumeEndpoint = Properties.Settings.Default.ConsumeEndpoint,
-                ScannerInputTimeoutInMilliseconds = Properties.Settings.Default.ScannerInputTimeoutInMilliseconds
+                ScannerInputTimeoutInMilliseconds = Properties.Settings.Default.ScannerInputTimeoutInMilliseconds,
+                UserCodePrefix = Properties.Settings.Default.UserIdPrefix
             };
         }
 
@@ -70,6 +80,7 @@ namespace PointsChecker
 
         private void OnTimerElapsed(object state)
         {
+            Logger.Debug("timer elapsed");
             ClearTimer();
 
             this.Invoke((Action)CaptureScanCodeWithUserId);
@@ -79,8 +90,9 @@ namespace PointsChecker
         {
             try
             {
+                Logger.Debug("Hook_KeyDown keyDownBuffer {0}", keyDownBuffer);
                 var userId = barcodeScannerProvider.MatchAndGetUserIdFromQRCode(keyDownBuffer.ToString());
-
+                Logger.Debug("Hook_KeyDown capture userId {0}", userId);
                 if (string.IsNullOrEmpty(userId))
                     return;
 
@@ -106,20 +118,24 @@ namespace PointsChecker
             {
                 MessageBox.Show(this, "Your request forbidden, perhapse your authorization token expired or blocked. Call to administrator." + Environment.NewLine + Environment.NewLine + ex.Message,
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                HideInTaskBar();
             }
             catch (ApiErrorException ex)
             {
                 MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                HideInTaskBar();
             }
             catch (UnhandledApiErrorException ex)
             {
                 MessageBox.Show(this, "Trown error while send request." + Environment.NewLine + Environment.NewLine + ex.Message,
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                HideInTaskBar();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(this, "Trown unhandled error while send request. Please try later or call to administrator." + Environment.NewLine + Environment.NewLine + ex.Message,
                     "Unhandled error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                HideInTaskBar();
             }
             finally
             {
@@ -140,19 +156,103 @@ namespace PointsChecker
             UpdateOrderButtonState();
         }
 
-        private void Hook_KeyDown(int wParam, KeyboardHookData lParam)
+        public void StartLAltNumPadComboMode()
+        {
+            Logger.Debug("Start lAlt + numpad combo mode");
+            lAltNumPadComboMode = true;
+            lAltNumPadComboModeBuffer.Clear();
+        }
+
+        public void FinishLAltNumPadComboMode()
+        {
+            lAltNumPadComboMode = false;
+            lAltNumPadComboModeBuffer.Clear();
+            Logger.Debug("Successful finished Lalt + numpad combo mode");
+        }
+
+        public void ParseLAltNumPadCombo()
+        {
+            Logger.Debug($"Convert to LAlt+numpad combo to symbol. Buffer has {lAltNumPadComboModeBuffer} symbols");
+            try
+            {
+                int code = Convert.ToInt32(lAltNumPadComboModeBuffer.ToString());
+                var charkey = Convert.ToChar(code);
+
+                debugBuffer.Append(charkey);
+                keyDownBuffer.Append(charkey);
+
+                FinishLAltNumPadComboMode();
+            }
+            catch
+            {
+                Logger.Debug("Can't convert LAlt+numpad sentense to symbol.");
+            }
+        }
+
+        private bool Hook_KeyDown(int wParam, KeyboardHookData lParam)
         {
             try
             {
-                var charkey = KeyEventUtility.GetCharFromKey(KeyInterop.KeyFromVirtualKey(lParam.vkCode)).ToString();
-
                 if (timer == null)
                 {
+                    Logger.Debug("Hook_KeyDown timer is null, clear timer");
                     // Clear data and capacity
+                    debugBuffer = new StringBuilder();
                     keyDownBuffer = new StringBuilder();
                 }
 
-                keyDownBuffer.Append(charkey);
+                if (wParam == KeyboardHook.WM_SYSKEYDOWN)
+                {
+                    if((lParam.vkCode & KeyboardHook.VK_LALT) == KeyboardHook.VK_LALT)
+                    {
+                        StartLAltNumPadComboMode();
+                        debugBuffer.Append("LAlt");
+                    }
+                    else if (lAltNumPadComboMode == true)
+                    {
+                        var numberCode = MapVirtualKey((uint)lParam.vkCode, MapType.MAPVK_VK_TO_CHAR);
+                        var numberCharKey = Convert.ToChar(numberCode);
+
+                        lAltNumPadComboModeBuffer.Append(numberCharKey);
+                        debugBuffer.Append(numberCharKey);
+
+                        if (lAltNumPadComboModeBuffer.Length >= 3)
+                        {
+                            ParseLAltNumPadCombo();
+                        }
+                    }
+                }
+                else
+                {
+                    if (lParam.vkCode == KeyboardHook.VK_BACK)
+                    {
+                        // backspace do nothing
+                        debugBuffer.Append("Back");
+                    }
+                    else if (lParam.vkCode == KeyboardHook.VK_ENTER && keyDownBuffer.Length > Settings.Default.UserIdPrefix.Length)
+                    {
+                        debugBuffer.Append("Enter");
+                        var userId = barcodeScannerProvider.MatchAndGetUserIdFromQRCode(keyDownBuffer.ToString());
+
+                        if (userId != null)
+                        {
+                            Logger.Debug("Block enter");
+                            Logger.Debug("Hook_KeyDown keyDownBuffer {0}", debugBuffer);
+                            return true;
+                        }
+                    }
+                    else
+                    {
+                        var charkey = lParam.vkCode == KeyboardHook.VK_PACKAGE ? Convert.ToChar(lParam.scanCode) : KeyEventUtility.GetCharFromKey(lParam);
+
+                        Logger.Debug("Hook_KeyDown charkey: {0}", charkey);
+
+                        keyDownBuffer.Append(charkey);
+                        debugBuffer.Append(charkey);
+                    }
+                }
+
+                Logger.Debug("Hook_KeyDown keyDownBuffer {0}", debugBuffer);
 
                 ClearTimer();
 
@@ -163,6 +263,8 @@ namespace PointsChecker
                 MessageBox.Show(this, "Trown error while hook key down. Restart app please." + Environment.NewLine + Environment.NewLine + ex.Message,
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            return false;
         }
 
         private void ClearTimer()
@@ -259,6 +361,7 @@ namespace PointsChecker
 
         private void StartSessionWithUserQRCode(string userId)
         {
+            Logger.Debug("StartSessionWithUserQRCode");
             this.userId = userId;
             ShowUserId(userId);
             ShowMainWindow();
@@ -267,6 +370,7 @@ namespace PointsChecker
 
         private void CloseSessionWithUserQRCode()
         {
+            Logger.Debug("CloseSessionWithUserQRCode");
             ShowProducts(null);
             ShowUserId(null);
             userId = null;
@@ -281,6 +385,8 @@ namespace PointsChecker
         {
             WindowState = prevWindowState;
             ShowInTaskbar = true;
+            Activate();
+            Focus();
         }
 
         private void HideInTaskBar()
@@ -373,6 +479,8 @@ namespace PointsChecker
 
                     productService = new ProductsService(configuration);
                 }
+
+                productListBox.Focus();
             }
         }
     }

@@ -55,6 +55,12 @@ namespace PointsChecker
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.roundedPanel5 = new PointsChecker.Controls.RoundedPanel();
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.userIdPrefixTextBox = new PointsChecker.Controls.RoundedTextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.runAsStartupCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.ScannerInputTimeoutNumericUpDown)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -66,6 +72,8 @@ namespace PointsChecker
             this.tableLayoutPanel4.SuspendLayout();
             this.roundedPanel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
+            this.roundedPanel5.SuspendLayout();
+            this.tableLayoutPanel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // baseUrlTextBox
@@ -78,7 +86,7 @@ namespace PointsChecker
             this.baseUrlTextBox.Margin = new System.Windows.Forms.Padding(15);
             this.baseUrlTextBox.MinimumSize = new System.Drawing.Size(0, 20);
             this.baseUrlTextBox.Name = "baseUrlTextBox";
-            this.baseUrlTextBox.Size = new System.Drawing.Size(421, 20);
+            this.baseUrlTextBox.Size = new System.Drawing.Size(311, 20);
             this.baseUrlTextBox.TabIndex = 0;
             // 
             // contextMenuStrip1
@@ -96,7 +104,7 @@ namespace PointsChecker
             this.checkPointsEndpointTextBox.Margin = new System.Windows.Forms.Padding(15);
             this.checkPointsEndpointTextBox.MinimumSize = new System.Drawing.Size(0, 20);
             this.checkPointsEndpointTextBox.Name = "checkPointsEndpointTextBox";
-            this.checkPointsEndpointTextBox.Size = new System.Drawing.Size(421, 20);
+            this.checkPointsEndpointTextBox.Size = new System.Drawing.Size(311, 20);
             this.checkPointsEndpointTextBox.TabIndex = 2;
             // 
             // ScannerInputTimeoutNumericUpDown
@@ -118,7 +126,7 @@ namespace PointsChecker
             0,
             0});
             this.ScannerInputTimeoutNumericUpDown.Name = "ScannerInputTimeoutNumericUpDown";
-            this.ScannerInputTimeoutNumericUpDown.Size = new System.Drawing.Size(421, 23);
+            this.ScannerInputTimeoutNumericUpDown.Size = new System.Drawing.Size(311, 23);
             this.ScannerInputTimeoutNumericUpDown.TabIndex = 3;
             this.ScannerInputTimeoutNumericUpDown.Value = new decimal(new int[] {
             500,
@@ -136,7 +144,7 @@ namespace PointsChecker
             this.consumeEndpointTextBox.Margin = new System.Windows.Forms.Padding(15);
             this.consumeEndpointTextBox.MinimumSize = new System.Drawing.Size(0, 20);
             this.consumeEndpointTextBox.Name = "consumeEndpointTextBox";
-            this.consumeEndpointTextBox.Size = new System.Drawing.Size(421, 20);
+            this.consumeEndpointTextBox.Size = new System.Drawing.Size(311, 20);
             this.consumeEndpointTextBox.TabIndex = 2;
             // 
             // apiTokenTextBox
@@ -150,7 +158,7 @@ namespace PointsChecker
             this.apiTokenTextBox.MinimumSize = new System.Drawing.Size(0, 20);
             this.apiTokenTextBox.Name = "apiTokenTextBox";
             this.apiTokenTextBox.PasswordChar = '*';
-            this.apiTokenTextBox.Size = new System.Drawing.Size(421, 20);
+            this.apiTokenTextBox.Size = new System.Drawing.Size(311, 20);
             this.apiTokenTextBox.TabIndex = 2;
             // 
             // cancelButton
@@ -162,7 +170,7 @@ namespace PointsChecker
             this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancelButton.Font = new System.Drawing.Font("Roboto Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cancelButton.ForeColor = System.Drawing.Color.White;
-            this.cancelButton.Location = new System.Drawing.Point(654, 358);
+            this.cancelButton.Location = new System.Drawing.Point(544, 444);
             this.cancelButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(139, 53);
@@ -178,7 +186,7 @@ namespace PointsChecker
             this.saveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.saveButton.Font = new System.Drawing.Font("Roboto Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.saveButton.ForeColor = System.Drawing.Color.White;
-            this.saveButton.Location = new System.Drawing.Point(507, 358);
+            this.saveButton.Location = new System.Drawing.Point(397, 444);
             this.saveButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(139, 53);
@@ -200,7 +208,7 @@ namespace PointsChecker
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(451, 49);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(341, 49);
             this.tableLayoutPanel1.TabIndex = 5;
             // 
             // panel1
@@ -210,7 +218,7 @@ namespace PointsChecker
             this.panel1.Controls.Add(this.tableLayoutPanel1);
             this.panel1.Location = new System.Drawing.Point(342, 15);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(451, 49);
+            this.panel1.Size = new System.Drawing.Size(341, 49);
             this.panel1.TabIndex = 6;
             // 
             // roundedPanel1
@@ -220,7 +228,7 @@ namespace PointsChecker
             this.roundedPanel1.Controls.Add(this.tableLayoutPanel2);
             this.roundedPanel1.Location = new System.Drawing.Point(342, 268);
             this.roundedPanel1.Name = "roundedPanel1";
-            this.roundedPanel1.Size = new System.Drawing.Size(451, 49);
+            this.roundedPanel1.Size = new System.Drawing.Size(341, 49);
             this.roundedPanel1.TabIndex = 7;
             // 
             // tableLayoutPanel2
@@ -236,7 +244,7 @@ namespace PointsChecker
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(451, 49);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(341, 49);
             this.tableLayoutPanel2.TabIndex = 5;
             // 
             // roundedPanel2
@@ -246,7 +254,7 @@ namespace PointsChecker
             this.roundedPanel2.Controls.Add(this.tableLayoutPanel3);
             this.roundedPanel2.Location = new System.Drawing.Point(342, 206);
             this.roundedPanel2.Name = "roundedPanel2";
-            this.roundedPanel2.Size = new System.Drawing.Size(451, 49);
+            this.roundedPanel2.Size = new System.Drawing.Size(341, 49);
             this.roundedPanel2.TabIndex = 8;
             // 
             // tableLayoutPanel3
@@ -262,7 +270,7 @@ namespace PointsChecker
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(451, 49);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(341, 49);
             this.tableLayoutPanel3.TabIndex = 5;
             // 
             // roundedPanel3
@@ -272,7 +280,7 @@ namespace PointsChecker
             this.roundedPanel3.Controls.Add(this.tableLayoutPanel4);
             this.roundedPanel3.Location = new System.Drawing.Point(342, 142);
             this.roundedPanel3.Name = "roundedPanel3";
-            this.roundedPanel3.Size = new System.Drawing.Size(451, 49);
+            this.roundedPanel3.Size = new System.Drawing.Size(341, 49);
             this.roundedPanel3.TabIndex = 9;
             // 
             // tableLayoutPanel4
@@ -288,7 +296,7 @@ namespace PointsChecker
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(451, 49);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(341, 49);
             this.tableLayoutPanel4.TabIndex = 5;
             // 
             // roundedPanel4
@@ -298,7 +306,7 @@ namespace PointsChecker
             this.roundedPanel4.Controls.Add(this.tableLayoutPanel5);
             this.roundedPanel4.Location = new System.Drawing.Point(342, 78);
             this.roundedPanel4.Name = "roundedPanel4";
-            this.roundedPanel4.Size = new System.Drawing.Size(451, 49);
+            this.roundedPanel4.Size = new System.Drawing.Size(341, 49);
             this.roundedPanel4.TabIndex = 10;
             // 
             // tableLayoutPanel5
@@ -314,7 +322,7 @@ namespace PointsChecker
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(451, 49);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(341, 49);
             this.tableLayoutPanel5.TabIndex = 5;
             // 
             // label1
@@ -379,12 +387,89 @@ namespace PointsChecker
             this.label5.TabIndex = 15;
             this.label5.Text = "Api token:";
             // 
+            // roundedPanel5
+            // 
+            this.roundedPanel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.roundedPanel5.Controls.Add(this.tableLayoutPanel6);
+            this.roundedPanel5.Location = new System.Drawing.Point(342, 330);
+            this.roundedPanel5.Name = "roundedPanel5";
+            this.roundedPanel5.Size = new System.Drawing.Size(341, 49);
+            this.roundedPanel5.TabIndex = 7;
+            // 
+            // tableLayoutPanel6
+            // 
+            this.tableLayoutPanel6.BackColor = System.Drawing.SystemColors.Window;
+            this.tableLayoutPanel6.ColumnCount = 1;
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.Controls.Add(this.userIdPrefixTextBox, 0, 0);
+            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 1;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(341, 49);
+            this.tableLayoutPanel6.TabIndex = 5;
+            // 
+            // userIdPrefixTextBox
+            // 
+            this.userIdPrefixTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.userIdPrefixTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.userIdPrefixTextBox.Font = new System.Drawing.Font("Roboto Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.userIdPrefixTextBox.Location = new System.Drawing.Point(15, 15);
+            this.userIdPrefixTextBox.Margin = new System.Windows.Forms.Padding(15);
+            this.userIdPrefixTextBox.MinimumSize = new System.Drawing.Size(0, 20);
+            this.userIdPrefixTextBox.Name = "userIdPrefixTextBox";
+            this.userIdPrefixTextBox.Size = new System.Drawing.Size(311, 20);
+            this.userIdPrefixTextBox.TabIndex = 2;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Roboto Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(37)))), ((int)(((byte)(27)))));
+            this.label6.Location = new System.Drawing.Point(13, 345);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(122, 19);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "User id prefix:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Roboto Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(37)))), ((int)(((byte)(27)))));
+            this.label7.Location = new System.Drawing.Point(13, 403);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(127, 19);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Run as startup";
+            // 
+            // runAsStartupCheckBox
+            // 
+            this.runAsStartupCheckBox.AutoSize = true;
+            this.runAsStartupCheckBox.Location = new System.Drawing.Point(333, 397);
+            this.runAsStartupCheckBox.Name = "runAsStartupCheckBox";
+            this.runAsStartupCheckBox.Padding = new System.Windows.Forms.Padding(10);
+            this.runAsStartupCheckBox.Size = new System.Drawing.Size(35, 34);
+            this.runAsStartupCheckBox.TabIndex = 0;
+            this.runAsStartupCheckBox.UseVisualStyleBackColor = true;
+            this.runAsStartupCheckBox.CheckedChanged += new System.EventHandler(this.runAsStartupCheckBox_CheckedChanged);
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
-            this.ClientSize = new System.Drawing.Size(806, 425);
+            this.ClientSize = new System.Drawing.Size(696, 511);
+            this.Controls.Add(this.runAsStartupCheckBox);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -392,12 +477,13 @@ namespace PointsChecker
             this.Controls.Add(this.label1);
             this.Controls.Add(this.roundedPanel4);
             this.Controls.Add(this.roundedPanel3);
+            this.Controls.Add(this.roundedPanel5);
             this.Controls.Add(this.roundedPanel2);
             this.Controls.Add(this.roundedPanel1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.cancelButton);
-            this.MinimumSize = new System.Drawing.Size(700, 438);
+            this.MinimumSize = new System.Drawing.Size(700, 550);
             this.Name = "SettingsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Settings";
@@ -416,6 +502,9 @@ namespace PointsChecker
             this.roundedPanel4.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
+            this.roundedPanel5.ResumeLayout(false);
+            this.tableLayoutPanel6.ResumeLayout(false);
+            this.tableLayoutPanel6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -446,5 +535,11 @@ namespace PointsChecker
         private Label label3;
         private Label label4;
         private Label label5;
+        private Controls.RoundedPanel roundedPanel5;
+        private TableLayoutPanel tableLayoutPanel6;
+        private Controls.RoundedTextBox userIdPrefixTextBox;
+        private Label label6;
+        private Label label7;
+        private CheckBox runAsStartupCheckBox;
     }
 }

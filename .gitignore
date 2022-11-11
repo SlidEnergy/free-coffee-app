@@ -2,3 +2,4 @@
 **/obj
 **/*.user
 **/packages
+UnitTests/bin

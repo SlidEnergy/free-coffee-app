@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -23,13 +24,15 @@ namespace PointsChecker
     /// the keystroke message.</param>
     /// <param name="lParam">The repeat count, scan code, extended-key flag, 
     /// context code, previous key-state flag,</param>     
-    public delegate void KeyboardHookEvent(int wParam, KeyboardHookData lParam);
+    public delegate bool KeyboardHookEvent(int wParam, KeyboardHookData lParam);
 
     /// <summary>
     /// Wrapper class for a Win32 Keyboard event hook.
     /// </summary>
     public class KeyboardHook
     {
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+
         //#############################################################       
         #region [# Win32 Constants #]
 
@@ -55,6 +58,25 @@ namespace PointsChecker
         /// 
         /// </summary>
         public static readonly int WM_SYSKEYUP = 0x105;
+        /// <summary>
+        /// 
+        /// </summary>
+        public static readonly int VK_PACKAGE = 0xE7;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static readonly int VK_BACK = 0x08;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static readonly int VK_ENTER = 0x0D;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static readonly int VK_LALT = 0xA4;
 
         //public static IntPtr hInstance = LoadLibrary("User32");
 
@@ -178,15 +200,22 @@ namespace PointsChecker
         {
 
             Keys k = (Keys)lParam.vkCode;
+            var handled = false;
 
             if ((wParam == WM_KEYDOWN || wParam == WM_SYSKEYDOWN) && (KeyDown != null))
             {
-                KeyDown(wParam, lParam);
+                Logger.Debug("hookProc keydown code: {0} wParam: {1} lParam: {2}", code, wParam, JsonConvert.SerializeObject(lParam));
+                
+                //handled = KeyDown(wParam, lParam);
             }
             else if ((wParam == WM_KEYUP || wParam == WM_SYSKEYUP) && (KeyUp != null))
             {
+                //Logger.Debug("hookProc keyup");
                 KeyUp(wParam, lParam);
             }
+
+            if (handled && (wParam == WM_KEYDOWN || wParam == WM_KEYUP))
+                return 1;
 
             return CallNextHookEx(hhook, code, wParam, ref lParam);
         }
@@ -203,7 +232,7 @@ namespace PointsChecker
         /// <param name="hInstance">The handle you want to attach the event to, can be null</param>
         /// <param name="threadId">The thread you want to attach the event to, can be null</param>
         /// <returns>a handle to the desired hook</returns>
-        [DllImport("user32.dll")]
+        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         static extern IntPtr SetWindowsHookEx(int idHook, keyboardHookProc callback, IntPtr hInstance, uint threadId);
 
         /// <summary>
@@ -222,7 +251,7 @@ namespace PointsChecker
         /// <param name="wParam">The wparam.</param>
         /// <param name="lParam">The lparam.</param>
         /// <returns></returns>
-        [DllImport("user32.dll")]
+        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         static extern int CallNextHookEx(IntPtr idHook, int nCode, int wParam, ref KeyboardHookData lParam);
 
         /// <summary>

@@ -82,5 +82,29 @@ namespace PointsChecker.Properties {
                 this["EncryptedApiToken"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("scanapp-")]
+        public string UserIdPrefix {
+            get {
+                return ((string)(this["UserIdPrefix"]));
+            }
+            set {
+                this["UserIdPrefix"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool RunAsStartup {
+            get {
+                return ((bool)(this["RunAsStartup"]));
+            }
+            set {
+                this["RunAsStartup"] = value;
+            }
+        }
     }
 }
