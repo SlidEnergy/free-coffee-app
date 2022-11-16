@@ -22,7 +22,7 @@ namespace PointsChecker
             configuration = config;
             httpClient.BaseAddress = new Uri(config.BaseUrl);
             httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
-            httpClient.DefaultRequestHeaders.Add("x-api-token", config.ApiToken);
+            httpClient.DefaultRequestHeaders.Add("x-api-key", config.ApiToken);
         }
 
         public async Task<List<Product>> GetFreeProductsAsync(string userId)
