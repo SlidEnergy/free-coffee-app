@@ -330,7 +330,7 @@ namespace PointsChecker
 
                 var successMessage = await productService.OrderProductAsync(product, userId);
 
-                MessageBox.Show(this, successMessage ?? "Product has been ordered.", "Success", MessageBoxButtons.OK);
+                Logger.Debug("ConsumePoints success {0}", successMessage ?? "Product has been ordered.");
             }
             catch (UnauthorizedAccessException ex)
             {
