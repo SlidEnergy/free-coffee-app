@@ -29,8 +29,6 @@ namespace PointsChecker
         {
             var result =  await httpClient.PostAsync($"{configuration.CheckPointsEndPoint}?user_id={userId}", null);
 
-            Logger.Debug("GetFreeProductsAsync send apikey: " + string.Join(",", httpClient.DefaultRequestHeaders.GetValues("x-api-token")));
-
             if (result.IsSuccessStatusCode)
             {
                 var json = await result.Content.ReadAsStringAsync();

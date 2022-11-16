@@ -206,11 +206,10 @@ namespace PointsChecker
             {
                 Logger.Debug("hookProc keydown code: {0} wParam: {1} lParam: {2}", code, wParam, JsonConvert.SerializeObject(lParam));
                 
-                //handled = KeyDown(wParam, lParam);
+                handled = KeyDown(wParam, lParam);
             }
             else if ((wParam == WM_KEYUP || wParam == WM_SYSKEYUP) && (KeyUp != null))
             {
-                //Logger.Debug("hookProc keyup");
                 KeyUp(wParam, lParam);
             }
 

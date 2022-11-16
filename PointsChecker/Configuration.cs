@@ -1,4 +1,6 @@
-﻿namespace PointsChecker
+﻿using Newtonsoft.Json;
+
+namespace PointsChecker
 {
     public class Configuration
     {
@@ -6,7 +8,8 @@
 
         public string BaseUrl { get; set; } = @"https://zireto.ro/api/";
 
-        public string ApiToken { get; set; } = "1234";
+        [JsonIgnore]
+        public string ApiToken { get; set; }
 
         public string CheckPointsEndPoint { get; set; } = "points/check";
 
