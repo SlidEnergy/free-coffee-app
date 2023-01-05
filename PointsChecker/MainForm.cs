@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Input;
 using static PointsChecker.KeyEventUtility;
 using Timer = System.Threading.Timer;
 
@@ -210,8 +211,7 @@ namespace PointsChecker
                     }
                     else if (lAltNumPadComboMode == true)
                     {
-                        var numberCode = MapVirtualKey((uint)lParam.vkCode, MapType.MAPVK_VK_TO_CHAR);
-                        var numberCharKey = Convert.ToChar(numberCode);
+                        var numberCharKey = KeyEventUtility.GetCharFromKey(lParam).ToString();
 
                         lAltNumPadComboModeBuffer.Append(numberCharKey);
                         debugBuffer.Append(numberCharKey);
