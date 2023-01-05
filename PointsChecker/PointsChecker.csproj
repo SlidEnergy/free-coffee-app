@@ -123,6 +123,7 @@
     <Compile Include="StartUpApp.cs" />
     <Compile Include="Utils\Encrypt.cs" />
     <Compile Include="Utils\GraphicsUtils.cs" />
+    <Compile Include="Utils\UsKeyboardScanCodes.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

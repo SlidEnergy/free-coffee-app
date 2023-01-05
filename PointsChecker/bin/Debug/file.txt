@@ -1,0 +1,132 @@
+2023-01-05 23:17:52.4567|DEBUG|PointsChecker.MainForm|MainForm {"BaseUrl":"https://zireto.ro/api/","CheckPointsEndPoint":"points/check","ConsumeEndpoint":"points/consume","ScannerInputTimeoutInMilliseconds":500,"UserCodePrefix":"scanapp-"}
+2023-01-05 23:18:00.5318|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 256 lParam: {"vkCode":160,"scanCode":42,"flags":0,"time":278963312,"dwExtraInfo":0}
+2023-01-05 23:18:00.5318|DEBUG|PointsChecker.MainForm|Hook_KeyDown timer is null, clear timer
+2023-01-05 23:18:00.5318|DEBUG|PointsChecker.MainForm|Hook_KeyDown charkey:  
+2023-01-05 23:18:00.5318|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  
+2023-01-05 23:18:00.9147|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 256 lParam: {"vkCode":80,"scanCode":25,"flags":0,"time":278963687,"dwExtraInfo":0}
+2023-01-05 23:18:00.9147|DEBUG|PointsChecker.MainForm|Hook_KeyDown charkey: p
+2023-01-05 23:18:00.9147|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  p
+2023-01-05 23:18:00.9267|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 256 lParam: {"vkCode":8,"scanCode":14,"flags":16,"time":278963703,"dwExtraInfo":-3943347}
+2023-01-05 23:18:00.9267|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  pBack
+2023-01-05 23:18:00.9407|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 260 lParam: {"vkCode":164,"scanCode":56,"flags":48,"time":278963718,"dwExtraInfo":-3943347}
+2023-01-05 23:18:00.9407|DEBUG|PointsChecker.MainForm|Start lAlt + numpad combo mode
+2023-01-05 23:18:00.9407|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  pBackLAlt
+2023-01-05 23:18:00.9556|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 260 lParam: {"vkCode":97,"scanCode":79,"flags":48,"time":278963734,"dwExtraInfo":-3943347}
+2023-01-05 23:18:02.2088|DEBUG|PointsChecker.MainForm|timer elapsed
+2023-01-05 23:29:06.7973|DEBUG|PointsChecker.MainForm|MainForm {"BaseUrl":"https://zireto.ro/api/","CheckPointsEndPoint":"points/check","ConsumeEndpoint":"points/consume","ScannerInputTimeoutInMilliseconds":500,"UserCodePrefix":"scanapp-"}
+2023-01-05 23:29:19.1771|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 256 lParam: {"vkCode":160,"scanCode":42,"flags":0,"time":279641953,"dwExtraInfo":0}
+2023-01-05 23:29:19.1771|DEBUG|PointsChecker.MainForm|Hook_KeyDown timer is null, clear timer
+2023-01-05 23:29:19.1771|DEBUG|PointsChecker.MainForm|Hook_KeyDown charkey:  
+2023-01-05 23:29:19.1771|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  
+2023-01-05 23:29:19.5805|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 256 lParam: {"vkCode":80,"scanCode":25,"flags":0,"time":279642359,"dwExtraInfo":0}
+2023-01-05 23:29:19.5805|DEBUG|PointsChecker.MainForm|Hook_KeyDown charkey: p
+2023-01-05 23:29:19.5805|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  p
+2023-01-05 23:29:19.5805|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 256 lParam: {"vkCode":8,"scanCode":14,"flags":16,"time":279642359,"dwExtraInfo":-3943347}
+2023-01-05 23:29:19.5805|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  pBack
+2023-01-05 23:29:19.5950|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 260 lParam: {"vkCode":164,"scanCode":56,"flags":48,"time":279642375,"dwExtraInfo":-3943347}
+2023-01-05 23:29:19.5950|DEBUG|PointsChecker.MainForm|Start lAlt + numpad combo mode
+2023-01-05 23:29:19.5950|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  pBackLAlt
+2023-01-05 23:29:19.6119|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 260 lParam: {"vkCode":97,"scanCode":79,"flags":48,"time":279642390,"dwExtraInfo":-3943347}
+2023-01-05 23:29:19.6119|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  pBackLAlt1
+2023-01-05 23:29:19.6369|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 260 lParam: {"vkCode":97,"scanCode":79,"flags":48,"time":279642406,"dwExtraInfo":-3943347}
+2023-01-05 23:29:19.6369|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  pBackLAlt11
+2023-01-05 23:29:19.6678|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 260 lParam: {"vkCode":101,"scanCode":76,"flags":48,"time":279642437,"dwExtraInfo":-3943347}
+2023-01-05 23:29:19.6678|DEBUG|PointsChecker.MainForm|Convert to LAlt+numpad combo to symbol. Buffer has 115 symbols
+2023-01-05 23:29:19.6678|DEBUG|PointsChecker.MainForm|Successful finished Lalt + numpad combo mode
+2023-01-05 23:29:19.6678|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  pBackLAlt115s
+2023-01-05 23:29:19.7012|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 260 lParam: {"vkCode":164,"scanCode":56,"flags":48,"time":279642484,"dwExtraInfo":-3943347}
+2023-01-05 23:29:19.7012|DEBUG|PointsChecker.MainForm|Start lAlt + numpad combo mode
+2023-01-05 23:29:19.7012|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  pBackLAlt115sLAlt
+2023-01-05 23:29:19.7192|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 260 lParam: {"vkCode":96,"scanCode":82,"flags":48,"time":279642500,"dwExtraInfo":-3943347}
+2023-01-05 23:29:19.7192|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  pBackLAlt115sLAlt0
+2023-01-05 23:29:19.7441|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 260 lParam: {"vkCode":105,"scanCode":73,"flags":48,"time":279642515,"dwExtraInfo":-3943347}
+2023-01-05 23:29:19.7441|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  pBackLAlt115sLAlt09
+2023-01-05 23:29:19.7591|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 260 lParam: {"vkCode":105,"scanCode":73,"flags":48,"time":279642531,"dwExtraInfo":-3943347}
+2023-01-05 23:29:19.7591|DEBUG|PointsChecker.MainForm|Convert to LAlt+numpad combo to symbol. Buffer has 099 symbols
+2023-01-05 23:29:19.7591|DEBUG|PointsChecker.MainForm|Successful finished Lalt + numpad combo mode
+2023-01-05 23:29:19.7591|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  pBackLAlt115sLAlt099c
+2023-01-05 23:29:19.7860|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 260 lParam: {"vkCode":164,"scanCode":56,"flags":48,"time":279642562,"dwExtraInfo":-3943347}
+2023-01-05 23:29:19.7860|DEBUG|PointsChecker.MainForm|Start lAlt + numpad combo mode
+2023-01-05 23:29:19.7860|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  pBackLAlt115sLAlt099cLAlt
+2023-01-05 23:29:19.8054|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 260 lParam: {"vkCode":96,"scanCode":82,"flags":48,"time":279642578,"dwExtraInfo":-3943347}
+2023-01-05 23:29:19.8054|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  pBackLAlt115sLAlt099cLAlt0
+2023-01-05 23:29:19.8194|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 260 lParam: {"vkCode":105,"scanCode":73,"flags":48,"time":279642593,"dwExtraInfo":-3943347}
+2023-01-05 23:29:19.8194|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  pBackLAlt115sLAlt099cLAlt09
+2023-01-05 23:29:19.8344|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 260 lParam: {"vkCode":103,"scanCode":71,"flags":48,"time":279642609,"dwExtraInfo":-3943347}
+2023-01-05 23:29:19.8344|DEBUG|PointsChecker.MainForm|Convert to LAlt+numpad combo to symbol. Buffer has 097 symbols
+2023-01-05 23:29:19.8344|DEBUG|PointsChecker.MainForm|Successful finished Lalt + numpad combo mode
+2023-01-05 23:29:19.8344|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  pBackLAlt115sLAlt099cLAlt097a
+2023-01-05 23:29:19.8613|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 260 lParam: {"vkCode":164,"scanCode":56,"flags":48,"time":279642640,"dwExtraInfo":-3943347}
+2023-01-05 23:29:19.8613|DEBUG|PointsChecker.MainForm|Start lAlt + numpad combo mode
+2023-01-05 23:29:19.8613|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  pBackLAlt115sLAlt099cLAlt097aLAlt
+2023-01-05 23:29:19.8822|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 260 lParam: {"vkCode":97,"scanCode":79,"flags":48,"time":279642656,"dwExtraInfo":-3943347}
+2023-01-05 23:29:19.8822|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  pBackLAlt115sLAlt099cLAlt097aLAlt1
+2023-01-05 23:29:19.8992|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 260 lParam: {"vkCode":97,"scanCode":79,"flags":48,"time":279642671,"dwExtraInfo":-3943347}
+2023-01-05 23:29:19.8992|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  pBackLAlt115sLAlt099cLAlt097aLAlt11
+2023-01-05 23:29:19.9141|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 260 lParam: {"vkCode":96,"scanCode":82,"flags":48,"time":279642687,"dwExtraInfo":-3943347}
+2023-01-05 23:29:19.9141|DEBUG|PointsChecker.MainForm|Convert to LAlt+numpad combo to symbol. Buffer has 110 symbols
+2023-01-05 23:29:19.9141|DEBUG|PointsChecker.MainForm|Successful finished Lalt + numpad combo mode
+2023-01-05 23:29:19.9141|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  pBackLAlt115sLAlt099cLAlt097aLAlt110n
+2023-01-05 23:29:19.9431|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 260 lParam: {"vkCode":164,"scanCode":56,"flags":48,"time":279642718,"dwExtraInfo":-3943347}
+2023-01-05 23:29:19.9431|DEBUG|PointsChecker.MainForm|Start lAlt + numpad combo mode
+2023-01-05 23:29:19.9431|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  pBackLAlt115sLAlt099cLAlt097aLAlt110nLAlt
+2023-01-05 23:29:19.9550|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 260 lParam: {"vkCode":96,"scanCode":82,"flags":48,"time":279642734,"dwExtraInfo":-3943347}
+2023-01-05 23:29:19.9550|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  pBackLAlt115sLAlt099cLAlt097aLAlt110nLAlt0
+2023-01-05 23:29:19.9770|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 260 lParam: {"vkCode":105,"scanCode":73,"flags":48,"time":279642750,"dwExtraInfo":-3943347}
+2023-01-05 23:29:19.9770|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  pBackLAlt115sLAlt099cLAlt097aLAlt110nLAlt09
+2023-01-05 23:29:19.9909|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 260 lParam: {"vkCode":103,"scanCode":71,"flags":48,"time":279642765,"dwExtraInfo":-3943347}
+2023-01-05 23:29:19.9909|DEBUG|PointsChecker.MainForm|Convert to LAlt+numpad combo to symbol. Buffer has 097 symbols
+2023-01-05 23:29:19.9909|DEBUG|PointsChecker.MainForm|Successful finished Lalt + numpad combo mode
+2023-01-05 23:29:19.9909|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  pBackLAlt115sLAlt099cLAlt097aLAlt110nLAlt097a
+2023-01-05 23:29:20.0199|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 260 lParam: {"vkCode":164,"scanCode":56,"flags":48,"time":279642796,"dwExtraInfo":-3943347}
+2023-01-05 23:29:20.0199|DEBUG|PointsChecker.MainForm|Start lAlt + numpad combo mode
+2023-01-05 23:29:20.0199|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  pBackLAlt115sLAlt099cLAlt097aLAlt110nLAlt097aLAlt
+2023-01-05 23:29:20.0378|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 260 lParam: {"vkCode":97,"scanCode":79,"flags":48,"time":279642812,"dwExtraInfo":-3943347}
+2023-01-05 23:29:20.0378|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  pBackLAlt115sLAlt099cLAlt097aLAlt110nLAlt097aLAlt1
+2023-01-05 23:29:20.0548|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 260 lParam: {"vkCode":97,"scanCode":79,"flags":48,"time":279642828,"dwExtraInfo":-3943347}
+2023-01-05 23:29:20.0548|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  pBackLAlt115sLAlt099cLAlt097aLAlt110nLAlt097aLAlt11
+2023-01-05 23:29:20.0687|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 260 lParam: {"vkCode":98,"scanCode":80,"flags":48,"time":279642843,"dwExtraInfo":-3943347}
+2023-01-05 23:29:20.0687|DEBUG|PointsChecker.MainForm|Convert to LAlt+numpad combo to symbol. Buffer has 112 symbols
+2023-01-05 23:29:20.0687|DEBUG|PointsChecker.MainForm|Successful finished Lalt + numpad combo mode
+2023-01-05 23:29:20.0687|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  pBackLAlt115sLAlt099cLAlt097aLAlt110nLAlt097aLAlt112p
+2023-01-05 23:29:20.0937|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 260 lParam: {"vkCode":164,"scanCode":56,"flags":48,"time":279642875,"dwExtraInfo":-3943347}
+2023-01-05 23:29:20.0937|DEBUG|PointsChecker.MainForm|Start lAlt + numpad combo mode
+2023-01-05 23:29:20.0937|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  pBackLAlt115sLAlt099cLAlt097aLAlt110nLAlt097aLAlt112pLAlt
+2023-01-05 23:29:20.1146|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 260 lParam: {"vkCode":97,"scanCode":79,"flags":48,"time":279642890,"dwExtraInfo":-3943347}
+2023-01-05 23:29:20.1146|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  pBackLAlt115sLAlt099cLAlt097aLAlt110nLAlt097aLAlt112pLAlt1
+2023-01-05 23:29:20.1286|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 260 lParam: {"vkCode":97,"scanCode":79,"flags":48,"time":279642906,"dwExtraInfo":-3943347}
+2023-01-05 23:29:20.1286|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  pBackLAlt115sLAlt099cLAlt097aLAlt110nLAlt097aLAlt112pLAlt11
+2023-01-05 23:29:20.1445|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 260 lParam: {"vkCode":98,"scanCode":80,"flags":48,"time":279642921,"dwExtraInfo":-3943347}
+2023-01-05 23:29:20.1445|DEBUG|PointsChecker.MainForm|Convert to LAlt+numpad combo to symbol. Buffer has 112 symbols
+2023-01-05 23:29:20.1445|DEBUG|PointsChecker.MainForm|Successful finished Lalt + numpad combo mode
+2023-01-05 23:29:20.1445|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  pBackLAlt115sLAlt099cLAlt097aLAlt110nLAlt097aLAlt112pLAlt112p
+2023-01-05 23:29:20.1735|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 260 lParam: {"vkCode":164,"scanCode":56,"flags":48,"time":279642953,"dwExtraInfo":-3943347}
+2023-01-05 23:29:20.1735|DEBUG|PointsChecker.MainForm|Start lAlt + numpad combo mode
+2023-01-05 23:29:20.1735|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  pBackLAlt115sLAlt099cLAlt097aLAlt110nLAlt097aLAlt112pLAlt112pLAlt
+2023-01-05 23:29:20.1884|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 260 lParam: {"vkCode":96,"scanCode":82,"flags":48,"time":279642968,"dwExtraInfo":-3943347}
+2023-01-05 23:29:20.1884|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  pBackLAlt115sLAlt099cLAlt097aLAlt110nLAlt097aLAlt112pLAlt112pLAlt0
+2023-01-05 23:29:20.2044|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 260 lParam: {"vkCode":100,"scanCode":75,"flags":48,"time":279642984,"dwExtraInfo":-3943347}
+2023-01-05 23:29:20.2044|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  pBackLAlt115sLAlt099cLAlt097aLAlt110nLAlt097aLAlt112pLAlt112pLAlt04
+2023-01-05 23:29:20.2193|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 260 lParam: {"vkCode":101,"scanCode":76,"flags":48,"time":279643000,"dwExtraInfo":-3943347}
+2023-01-05 23:29:20.2193|DEBUG|PointsChecker.MainForm|Convert to LAlt+numpad combo to symbol. Buffer has 045 symbols
+2023-01-05 23:29:20.2193|DEBUG|PointsChecker.MainForm|Successful finished Lalt + numpad combo mode
+2023-01-05 23:29:20.2193|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  pBackLAlt115sLAlt099cLAlt097aLAlt110nLAlt097aLAlt112pLAlt112pLAlt045-
+2023-01-05 23:29:20.2493|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 260 lParam: {"vkCode":164,"scanCode":56,"flags":48,"time":279643031,"dwExtraInfo":-3943347}
+2023-01-05 23:29:20.2493|DEBUG|PointsChecker.MainForm|Start lAlt + numpad combo mode
+2023-01-05 23:29:20.2493|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  pBackLAlt115sLAlt099cLAlt097aLAlt110nLAlt097aLAlt112pLAlt112pLAlt045-LAlt
+2023-01-05 23:29:20.2792|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 260 lParam: {"vkCode":96,"scanCode":82,"flags":48,"time":279643062,"dwExtraInfo":-3943347}
+2023-01-05 23:29:20.2792|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  pBackLAlt115sLAlt099cLAlt097aLAlt110nLAlt097aLAlt112pLAlt112pLAlt045-LAlt0
+2023-01-05 23:29:20.3101|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 260 lParam: {"vkCode":100,"scanCode":75,"flags":48,"time":279643078,"dwExtraInfo":-3943347}
+2023-01-05 23:29:20.3111|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  pBackLAlt115sLAlt099cLAlt097aLAlt110nLAlt097aLAlt112pLAlt112pLAlt045-LAlt04
+2023-01-05 23:29:20.3410|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 260 lParam: {"vkCode":105,"scanCode":73,"flags":48,"time":279643109,"dwExtraInfo":-3943347}
+2023-01-05 23:29:20.3410|DEBUG|PointsChecker.MainForm|Convert to LAlt+numpad combo to symbol. Buffer has 049 symbols
+2023-01-05 23:29:20.3410|DEBUG|PointsChecker.MainForm|Successful finished Lalt + numpad combo mode
+2023-01-05 23:29:20.3410|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  pBackLAlt115sLAlt099cLAlt097aLAlt110nLAlt097aLAlt112pLAlt112pLAlt045-LAlt0491
+2023-01-05 23:29:20.3739|DEBUG|PointsChecker.KeyboardHook|hookProc keydown code: 0 wParam: 256 lParam: {"vkCode":13,"scanCode":28,"flags":16,"time":279643156,"dwExtraInfo":-3943347}
+2023-01-05 23:29:20.3739|DEBUG|PointsChecker.MainForm|Block enter
+2023-01-05 23:29:20.3739|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  pBackLAlt115sLAlt099cLAlt097aLAlt110nLAlt097aLAlt112pLAlt112pLAlt045-LAlt0491Enter
+2023-01-05 23:29:20.8472|DEBUG|PointsChecker.MainForm|timer elapsed
+2023-01-05 23:29:20.8472|DEBUG|PointsChecker.MainForm|Hook_KeyDown keyDownBuffer  pscanapp-1
+2023-01-05 23:29:20.8472|DEBUG|PointsChecker.MainForm|Hook_KeyDown capture userId 1
+2023-01-05 23:29:20.8472|DEBUG|PointsChecker.MainForm|CloseSessionWithUserQRCode
+2023-01-05 23:29:20.8472|DEBUG|PointsChecker.MainForm|StartSessionWithUserQRCode

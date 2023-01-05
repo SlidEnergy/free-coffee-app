@@ -211,7 +211,7 @@ namespace PointsChecker
                     }
                     else if (lAltNumPadComboMode == true)
                     {
-                        var numberCharKey = KeyEventUtility.GetCharFromKey(lParam).ToString();
+                        var numberCharKey = UsKeyboardScanCodes.GetCharByNumPadScanCode(lParam.scanCode);
 
                         lAltNumPadComboModeBuffer.Append(numberCharKey);
                         debugBuffer.Append(numberCharKey);
