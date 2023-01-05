@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace PointsChecker
@@ -14,9 +12,16 @@ namespace PointsChecker
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            bool createdNew = true;
+            using (Mutex mutex = new Mutex(true, "PointsChecker", out createdNew))
+            {
+                if (createdNew)
+                {
+                    Application.EnableVisualStyles();
+                    Application.SetCompatibleTextRenderingDefault(false);
+                    Application.Run(new MainForm());
+                }
+            }
         }
     }
 }
